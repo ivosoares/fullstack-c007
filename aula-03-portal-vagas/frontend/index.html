@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue - Portal de Vagas</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="#">Portal de Vagas</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+        <h1 class="text-center mt-3">Portal de Vagas Blue Edtech</h1>
+        <section>
+            <form action="">
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="titulo" placeholder="Digite o seu titulo">
+                            <label for="titulo">Titulo</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="empresa" placeholder="Digite o seu empresa">
+                            <label for="empresa">Empresa</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="logo" placeholder="Digite a url da imagem da logo">
+                            <label for="logo">Logo da Empresa</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="salario" placeholder="Digite o salário">
+                            <label for="salario">Salario</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="senioridade" placeholder="Digite a senioridade">
+                            <label for="senioridade">senioridade</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Digite a descricao" id="descricao"></textarea>
+                            <label for="descricao">Descricao</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="d-grid gap-2 d-md-block">
+                            <button class="btn btn-success" type="button">Enviar</button>
+                            <button class="btn btn-outline-danger" type="button">cancelar</button>
+                          </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section class="mt-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                  <div class="card">
+                    <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQET4zubIYEjJQ/company-logo_200_200/0/1625249003866?e=2159024400&v=beta&t=AL_GUba4oxMd6gw0PcXSx3EpyI0F4bm5cBWF1m7OLSg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Desenvolvedor Front-End - Blue</h5>
+                      <span class="badge bg-primary">Senior</span>
+                      <p class="card-text">R$5000</p>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <div>
+                          <button class="btn btn-primary">Editar</button>
+                          <button class="btn btn-danger">Excluir</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+    </main>
+    <footer class="bg-primary py-2">
+      <p class="text-white text-center mb-0">Desenvolvido por Blue Edtech - Prof. Ivo Soares</p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

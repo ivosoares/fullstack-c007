@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+header, footer {
+    width: 100%;
+}
+.card-img-top {
+    width: 50% !important;
+    height: auto !important;
+    margin: 0 auto;
+}
