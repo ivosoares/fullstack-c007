@@ -50,4 +50,4 @@ typeof(object_as_string_as_object);
 
 ## Aulas
 
-- [Aula 1: Backend NodeJS com Express e consumo com Frontend JS (Vanilla) - Parte 1](./aula-01/aula-01.md)
+- [Aula 1: Backend NodeJS com Express e consumo com Frontend JS (Vanilla) - Parte 1](./aula-01/docs/aula-01.md)
