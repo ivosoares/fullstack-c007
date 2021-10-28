@@ -7,10 +7,9 @@ const lista = document.getElementById('lista');
 // primeiro parametro  = endpoint da requiscao (url).
 // segundo parametro(opcional) = configuroes da requisicao.
 
-
 // programacao assincrona
 
-const chamadaApi = fetch('http://localhost:3000/tarefas');
+const chamadaApi = fetch('http://localhost:3001/tarefas');
 console.log(chamadaApi); // promisse
 
 chamadaApi.then((response) => {
@@ -18,6 +17,7 @@ chamadaApi.then((response) => {
     console.log(response);
     return response.json();
 }).then((tarefasData) => {
+    console.log(tarefasData);
     tarefasData.map((tarefa) => {
         lista.insertAdjacentHTML('beforeend', `
             <li class="list-item">

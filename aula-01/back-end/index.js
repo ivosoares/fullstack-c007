@@ -85,7 +85,7 @@ app.get('/tarefas/:id', (req, res) => {
 
 
 // definir a porta onde irá executar o meu servidor Back-End
-const port = 3000;
+const port = 3001;
 
 // inicializamos o servidor na porta pré definida.
 app.listen(port, () => {

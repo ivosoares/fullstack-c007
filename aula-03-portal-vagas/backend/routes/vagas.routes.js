@@ -7,7 +7,7 @@ const vagas = [
         id: Date.now(),
         titulo: 'desenvolvedor front-end',
         empresa: 'blue',
-        logo: 'url do logo',
+        logo: 'https://media-exp1.licdn.com/dms/image/C4E0BAQET4zubIYEjJQ/company-logo_200_200/0/1625249003866?e=2159024400&v=beta&t=AL_GUba4oxMd6gw0PcXSx3EpyI0F4bm5cBWF1m7OLSg',
         salario: '3000',
         senioridade: 'junior',
         descricao: 'vaga de dev front-end xyz bla bla bla'
