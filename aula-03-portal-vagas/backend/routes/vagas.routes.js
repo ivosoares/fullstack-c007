@@ -68,11 +68,12 @@ router.delete('/delete/:id', (req, res) => {
 
     const index = vagas.findIndex(vaga => vaga.id == idParam);
     const nome = vagas[index];
+    //excluimos a vaga da lista de acordo com o seu indice.
     vagas.splice(index, 1);
     res.send({
         message: `Vaga ${nome.titulo} excluida com sucesso !`,
     })
 })
 
-
+// exporta as rotas para serem usadas no index.
 module.exports = router;
