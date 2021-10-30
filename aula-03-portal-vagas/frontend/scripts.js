@@ -5,6 +5,8 @@ const lista = document.getElementById('lista')
 const apiUrl = 'http://localhost:3000/vagas';
 
 let edicao = false;
+let idEdicao = 0;
+
 // pegar os dados que o usuario digita no input (Elementos)
 let titulo = document.getElementById('titulo');
 let empresa = document.getElementById('empresa');
@@ -37,7 +39,7 @@ const getVagas = async () => {
                 <p class="card-text">R$ ${vaga.salario}</p>
                 <p class="card-text">${vaga.descricao}</p>
                 <div>
-                    <button class="btn btn-primary" onclick="putVaga('${vaga.id}')">Editar</button>
+                    <button class="btn btn-primary" onclick="editVaga('${vaga.id}')">Editar</button>
                     <button class="btn btn-danger" onclick="deleteVaga('${vaga.id}')">Excluir</button>
                 </div>
             </div>
@@ -50,7 +52,6 @@ const getVagas = async () => {
 // [POST] envia uma vaga para o backend para ser cadastrada
 
 const submitForm = async (event) => {
-    console.log('ela esta executando');
     // previnir que o navegador atualiza a pagina por causa o evento de submit
     event.preventDefault();
 
@@ -63,7 +64,18 @@ const submitForm = async (event) => {
         senioridade: senioridade.value,
         descricao: descricao.value
     }
-    
+
+    if(edicao) {
+        putVaga(vaga, idEdicao);
+    } else {
+        createVaga(vaga);
+    }
+
+    clearFields();
+    lista.innerHTML = '';
+}
+
+const createVaga = async(vaga) => {
     // estou construindo a requisicao para ser enviada para o backend.
     const request = new Request(`${apiUrl}/add`, {
         method: 'POST',
@@ -75,14 +87,32 @@ const submitForm = async (event) => {
 
     // chamamos a funcao fetch de acordo com as nossa configuracaoes de requisicao.
     const response = await fetch(request);
-    
+
     const result = await response.json();
     // pego o objeto que vem do backend e exibo a msg de sucesso em um alerta.
     alert(result.message)
+    getVagas();
 
-    clearFields();
-    lista.innerHTML = '';
+}
 
+const putVaga = async(vaga, id) => {
+    // estou construindo a requisicao para ser enviada para o backend.
+    const request = new Request(`${apiUrl}/edit/${id}`, {
+        method:  'PUT',
+        body: JSON.stringify(vaga),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    })
+
+    // chamamos a funcao fetch de acordo com as nossa configuracaoes de requisicao.
+    const response = await fetch(request);
+
+    const result = await response.json();
+    // pego o objeto que vem do backend e exibo a msg de sucesso em um alerta.
+    alert(result.message)
+    edicao = false;
+    idEdicao = 0;
     getVagas();
 }
 
@@ -115,9 +145,10 @@ const getVagaById = async (id) => {
 // ao clicar no botao editar
 // ela vai preencher os campos dos inputs
 // para montar o objeto para ser editado
-const putVaga = async (id) => {
-    // habilitando o modo de edicao
+const editVaga = async (id) => {
+    // habilitando o modo de edicao e enviando o id para variavel global de edicao.
     edicao = true;
+    idEdicao = id;
 
     //precismo buscar a informacao da vaga por id para popular os campos
     // salva os dados da vaga que vamos editar na variavel vaga.
@@ -130,11 +161,7 @@ const putVaga = async (id) => {
     salario.value = vaga.salario;
     senioridade.value = vaga.senioridade;
     descricao.value = vaga.descricao;
-
-
 }
-
-
 
 
 const clearFields = () => {
