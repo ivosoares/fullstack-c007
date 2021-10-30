@@ -4,6 +4,7 @@ const lista = document.getElementById('lista')
 // atribuindo a endpoint da api do backend em um constante
 const apiUrl = 'http://localhost:3000/vagas';
 
+let edicao = false;
 // pegar os dados que o usuario digita no input (Elementos)
 let titulo = document.getElementById('titulo');
 let empresa = document.getElementById('empresa');
@@ -36,7 +37,7 @@ const getVagas = async () => {
                 <p class="card-text">R$ ${vaga.salario}</p>
                 <p class="card-text">${vaga.descricao}</p>
                 <div>
-                    <button class="btn btn-primary">Editar</button>
+                    <button class="btn btn-primary" onclick="putVaga('${vaga.id}')">Editar</button>
                     <button class="btn btn-danger" onclick="deleteVaga('${vaga.id}')">Excluir</button>
                 </div>
             </div>
@@ -62,7 +63,7 @@ const submitForm = async (event) => {
         senioridade: senioridade.value,
         descricao: descricao.value
     }
-
+    
     // estou construindo a requisicao para ser enviada para o backend.
     const request = new Request(`${apiUrl}/add`, {
         method: 'POST',
@@ -86,7 +87,7 @@ const submitForm = async (event) => {
 }
 
 
-// funcao que exclui um vaga de acordo com o seu id
+// [DELETE] funcao que exclui um vaga de acordo com o seu id
 const deleteVaga = async (id) => {
     // construir a requiscao de delete
     const request = new Request(`${apiUrl}/delete/${id}`, {
@@ -101,6 +102,39 @@ const deleteVaga = async (id) => {
     lista.innerHTML = '';
     getVagas();
 }
+
+
+// [GET] /Vaga/{id} - funcao onde recebe um id via paramtero envia uma requisicao para o backend
+// e retorna a vaga de acordo com esse id.
+const getVagaById = async (id) => {
+    const response = await fetch(`${apiUrl}/${id}`);
+    return await response.json();
+}
+
+
+// ao clicar no botao editar
+// ela vai preencher os campos dos inputs
+// para montar o objeto para ser editado
+const putVaga = async (id) => {
+    // habilitando o modo de edicao
+    edicao = true;
+
+    //precismo buscar a informacao da vaga por id para popular os campos
+    // salva os dados da vaga que vamos editar na variavel vaga.
+    const vaga = await getVagaById(id);
+
+    //preencher os campos de acordo com a vaga que vamos editar.
+    titulo.value = vaga.titulo;
+    empresa.value =  vaga.empresa;
+    logo.value = vaga.logo;
+    salario.value = vaga.salario;
+    senioridade.value = vaga.senioridade;
+    descricao.value = vaga.descricao;
+
+
+}
+
+
 
 
 const clearFields = () => {
