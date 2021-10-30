@@ -4,6 +4,7 @@ const lista = document.getElementById('lista')
 // atribuindo a endpoint da api do backend em um constante
 const apiUrl = 'http://localhost:3000/vagas';
 
+// modo edicao e id edicao
 let edicao = false;
 let idEdicao = 0;
 
@@ -64,6 +65,7 @@ const submitForm = async (event) => {
         senioridade: senioridade.value,
         descricao: descricao.value
     }
+    // é o objeto preenchido com os valores digitados no input
 
     if(edicao) {
         putVaga(vaga, idEdicao);
@@ -91,6 +93,7 @@ const createVaga = async(vaga) => {
     const result = await response.json();
     // pego o objeto que vem do backend e exibo a msg de sucesso em um alerta.
     alert(result.message)
+    // vaga cadastrada com sucesso.
     getVagas();
 
 }
