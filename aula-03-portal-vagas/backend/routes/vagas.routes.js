@@ -23,6 +23,13 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const idParam = req.params.id;
     const vaga = vagas.find(vaga => vaga.id == idParam);
+
+    // verifica se a vaga nao foi encontrada
+    if(!vaga) {
+        res.status(404).send({error: 'Vaga nao encontrada'});
+        return;
+    }
+
     res.send(vaga);
 })
 
@@ -30,6 +37,16 @@ router.get('/:id', (req, res) => {
 router.post('/add', (req, res) => {
     // recebi o objeto da vaga para cadastar vinda do cliente (via requisicao http POST)
     const vaga = req.body;
+
+    // validacao se existe os campos
+
+    if(!vaga || !vaga.titulo || !vaga.salario || !vaga.logo || !vaga.salario) {
+        res.status(400).send({
+            message: 'vaga inválida, esta faltando os campos titulo e salario'
+        })
+        return;
+    }
+    
     vaga.id = Date.now();
     vagas.push(vaga);
     res.status(201).send({
@@ -46,6 +63,13 @@ router.put('/edit/:id', (req, res) => {
     const idParam = req.params.id;
     // procura o indice da vaga pre cadastrada na lista de acordo com o id recebido para atualizala
     let index = vagas.findIndex(vaga => vaga.id == idParam);
+
+    if(index < 0) {
+        res.status(404).send({
+            error: 'a vaga que voce está tentando editar nao foi encontrada'
+        })
+        return;
+    }
 
     // spread operator ...
     // faz um espelho do item na lista e um espelho do objeto atualizado e junta os 2
