@@ -1,25 +1,27 @@
 const express = require('express');
 const cors = require('cors');
+// importa arquivo de conexao para acesso ao metodo
 const Conn = require('./conn/conn');
 
+const VagasRouter = require('./routes/vagas.routes');
+const UserRouter = require('./routes/user.routes');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+// falo pro express ultizar as minhas rotas para o endpoint /vagas
+app.use('/vagas', VagasRouter);
+app.use('/user', UserRouter);
 
 // chamo o metodo para conexao com o banco de dados
 Conn();
-
-// [GET] - retornar os dados cadastrados no banco de dados
-
 
 const port = 3000;
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 })
-
 
 // MVC 
 // MODEL = é responsavel pelos dados e funcoes do banco de dados
