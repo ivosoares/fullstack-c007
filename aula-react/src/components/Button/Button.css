@@ -1,0 +1,33 @@
+/* estilo global dos botoes */
+.btn {
+  background-color: #FFF;
+  border: 1px solid black;
+  border-radius: 10px;
+  outline: none;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* estilos de variacoes dos botoes */
+
+.danger {
+  background-color: red;
+  color: #FFF;
+}
+
+.success {
+  background-color: green;
+  color: #FFF;
+}
+
+.primary {
+  background-color: fuchsia;
+  color: green;
+}
+
+.default {
+  background-color: blue;
+  color: #000;
+}
