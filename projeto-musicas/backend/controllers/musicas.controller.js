@@ -17,8 +17,8 @@ class MusicasController {
   // funcao que busca uma unica musica por id
   getMusicaById = async (req, res) => {
     // buscar o id que vem na requisicao via parmetro
-    const idParam = req.params.id;
-    const musica = await musicasService.findById(idParam);
+    //const idParam = req.params.id;
+    const musica = await musicasService.findById(req.params.id);
     res.send(musica);
   }
 
@@ -26,13 +26,17 @@ class MusicasController {
   createMusic = async (req, res) => {
     // acesso o corpo da requisicao para pegar o objeto.
     // objeto para ser cadastrado no banco.
-    const musica = req.body;
-    await musicasService.create(musica)
+    //const musica = req.body;
+    if(!req.body){
+      return;
+    }
+    await musicasService.create(req.body)
     .then(() => {
       res.send({message: `Musica ${musica.nome} Cadastrada com sucesso`})
     })
     .catch((err) => {
-      res.status(500).send({message: `Erro no servidor: ${err}`})
+      console.error(err);
+      res.status(500).send({message: `Erro no servidor`})
     })
   }
 

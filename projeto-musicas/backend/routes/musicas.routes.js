@@ -2,6 +2,8 @@
 const express = require('express');
 // importar o controller para poder chamar as suas funcoes na rota
 const MusicasController = require('./../controllers/musicas.controller');
+
+const MusicasControllerFunc = require('./../controllers/musicas.func.controller');
 // inicializar a classe controller
 const musicasController = new MusicasController;
 
@@ -12,6 +14,8 @@ const router = express.Router();
 // requisicao = o que vem do cliente(front) para o server (back).
 // response = o que o server(backend) responde para o client(frontend).
 router.get('/', musicasController.getMusicas);
+
+router.get('/listar', MusicasControllerFunc.getAll);
 
 // [GET] /musicas/{id} - retornar uma unica musica de acordo com o seu id
 router.get('/:id', musicasController.getMusicaById);
