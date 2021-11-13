@@ -1,5 +1,6 @@
 import React from 'react';
 import './List.css';
+import Img from '../Imgs/Img';
 
 
 const List = (props) => {
@@ -9,7 +10,7 @@ const List = (props) => {
       {data.map((filme) => (
         <li key={filme.id}>
           <h3 className="title">{filme.nome}</h3>
-          <img className="img" src={filme.imagem} alt={filme.nome}/>
+          <Img classe="img" nome={filme.nome} imagem={filme.imagem}/>
         </li>
       ))}
     </div>
