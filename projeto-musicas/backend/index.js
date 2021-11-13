@@ -24,7 +24,7 @@ app.use('/musicas', MusicasRouter);
 Conn();
 
 // inicializar o servidor http em alguma porta para podermos acessar ele.
-const port = 3000;
+const port = 3001;
 app.listen(port, () => {
   console.log(`O servidor esta rodando na porta ${port}`);
 })
