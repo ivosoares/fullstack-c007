@@ -14,7 +14,7 @@ const Cadastro = () => {
         <label htmlFor="capa">Capa do album:</label>
         <input id="capa" type="text" placeholder="URL da capa do album" name="capa"/>
         <label htmlFor="duracao">Duração da musica:</label>
-        <input id="duracao" type="number" placeholder="Duraçao da musica" name="duracao"/>
+        <input id="duracao" type="time" step="100" placeholder="Duraçao da musica" name="duracao"/>
         <button type="submit">Enviar</button>
       </form>
     </div>
