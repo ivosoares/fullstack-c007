@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Card = (props) => {
+  // objeto musica
   const musica = props.data;
   return (
-    <div className="col" key={musica._id}>
+    <Link to={`/view/${musica._id}`} className="col">
       <div className="card">
         <img src={musica.capa} alt={musica.nome} className="card-img-top" />
         <div className="card-body">
@@ -11,7 +13,7 @@ const Card = (props) => {
           <span className="badge bg-primary">{musica.genero}</span>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
