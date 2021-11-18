@@ -14,7 +14,7 @@ const musicaSchema = new mongoose.Schema({
   autor: {type: String, required: true},
   genero: {type: String, required: true},
   capa: {type: String },
-  duracao: {type: Number },
+  duracao: {type: String },
   dataCriacao: { type: Date, default: Date.now }
 })
 

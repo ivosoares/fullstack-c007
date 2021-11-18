@@ -26,17 +26,17 @@ class MusicasController {
   createMusic = async (req, res) => {
     // acesso o corpo da requisicao para pegar o objeto.
     // objeto para ser cadastrado no banco.
-    //const musica = req.body;
+    const musica = req.body;
     if(!req.body){
       return;
     }
-    await musicasService.create(req.body)
+    await musicasService.create(musica)
     .then(() => {
       res.send({message: `Musica ${musica.nome} Cadastrada com sucesso`})
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send({message: `Erro no servidor`})
+      res.status(500).send({error: `Erro no servidor: ${err}`})
     })
   }
 

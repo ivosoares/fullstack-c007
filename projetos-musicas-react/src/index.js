@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
+// react-router-dom - framework que cuida das rotas.
 // renderiza o nosso componente principal dentro da div root.
 // BrowserRouter - necessario para fazer as rotas funcionarem <Router></Router>
 ReactDOM.render(
