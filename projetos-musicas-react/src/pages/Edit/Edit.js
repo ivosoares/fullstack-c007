@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Api from "../../api/api";
 
 const Edit = () => {
-  // acessa o id no parametro da url;
-  const { id } = useParams();
-  // inicializar o meu estado do objeto musica
+  const navigate = useNavigate();
+  //declarar o estado da musica
   const [musica, setMusica] = useState({});
-
-  // use Effect chama a funcao que retorna o objeto do backend de acordo com o id
   useEffect(() => {
     getMusicaById();
-  }, [])
+  }, []);
 
+  // buscar a musica que ja foi cadastrado no banco.
+  // buscar a musica pelo o id passado via parametro da url.
+  const { id } = useParams();
+
+  //buscar a musica por id;
   const getMusicaById = async () => {
     const request = await Api.fetchGetById(id);
     const musica = await request.json();
@@ -20,15 +22,21 @@ const Edit = () => {
   };
 
   const handleFieldsChange = (evento) => {
-    // copia do objeto musicas
-    const campos = { ...musica }
+    // copio o objeto do estado.
+    const musicaEdit = { ...musica };
+    // musicaEdit['nome'] = 'novo valor'
+    // atualiza os campos do objeto de forma dinamica de acordo com o input que o usuario digitou
+    musicaEdit[evento.target.name] = evento.target.value;
+    // atualzo estado musica
+    setMusica(musicaEdit);
+  }
 
-    // para cada input eu atualizo o seu respectivo valor no obj
-    campos[evento.target.name] = evento.target.value;
-
-    console.log(campos);
-    setMusica(campos);
-
+  const handleSubmit = async (evento) => {
+    evento.preventDefault();
+    const request = await Api.fetchPut(musica, id);
+    const response = await request.json();
+    alert(response.message);
+    navigate(`/view/${id}`);
   }
 
   return (
@@ -42,7 +50,7 @@ const Edit = () => {
           </div>
         </div>
         <div className="card-body">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="row mb-4">
               <div className="col-4">
                 <div className="form-group">

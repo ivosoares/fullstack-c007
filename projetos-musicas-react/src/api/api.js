@@ -10,6 +10,15 @@ const Api = {
         "Content-Type": "application/json"
       })
     })
+  },
+  fetchPut: (musica, id) => {
+    return fetch(`${Api.apiUrl}/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(musica),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    })
   }
 }
 
