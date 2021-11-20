@@ -5,7 +5,14 @@ import Api from "../../api/api";
 const Edit = () => {
   const navigate = useNavigate();
   //declarar o estado da musica
-  const [musica, setMusica] = useState({});
+  const [musica, setMusica] = useState({
+    nome: '',
+    autor: '',
+    genero: '',
+    capa: '',
+    duracao: ''
+  });
+  
   useEffect(() => {
     getMusicaById();
   }, []);
@@ -34,8 +41,8 @@ const Edit = () => {
   const handleSubmit = async (evento) => {
     evento.preventDefault();
     const request = await Api.fetchPut(musica, id);
-    const response = await request.json();
-    alert(response.message);
+    const data = await request.json();
+    alert(data.message);
     navigate(`/view/${id}`);
   }
 
@@ -74,8 +81,8 @@ const Edit = () => {
                     type="text"
                     className="form-control"
                     placeholder="Nome do autor"
-                    value={musica.autor}
                     onChange={handleFieldsChange}
+                    value={musica.autor}
                     name="autor"
                   />
                 </div>
@@ -87,8 +94,8 @@ const Edit = () => {
                     id="genero"
                     type="text"
                     className="form-control"
-                    value={musica.genero}
                     onChange={handleFieldsChange}
+                    value={musica.genero}
                     placeholder="Genero da musica"
                     name="genero"
                   />
@@ -102,8 +109,8 @@ const Edit = () => {
                   <input
                     id="capa"
                     type="text"
-                    value={musica.capa}
                     onChange={handleFieldsChange}
+                    value={musica.capa}
                     className="form-control"
                     placeholder="URL da capa do album"
                     name="capa"
@@ -116,8 +123,8 @@ const Edit = () => {
                   <input
                     id="duracao"
                     type="time"
-                    value={musica.duracao}
                     onChange={handleFieldsChange}
+                    value={musica.duracao}
                     className="form-control"
                     min="00:00"
                     max="10:00"

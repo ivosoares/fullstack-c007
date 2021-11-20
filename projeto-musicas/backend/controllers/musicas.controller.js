@@ -62,7 +62,7 @@ class MusicasController {
       res.send({message: 'Excluido com sucesso'})
     })
     .catch(err => {
-      res.status(500).send({message: `Error: ${err}`});
+      res.status(500).send({error: `Error: ${err}`});
     })
   }
 }

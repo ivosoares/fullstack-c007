@@ -19,6 +19,11 @@ const Api = {
         "Content-Type": "application/json"
       })
     })
+  },
+  fetchDelete: (id) => {
+    return fetch(`${Api.apiUrl}/${id}`, {
+      method: 'DELETE'
+    })
   }
 }
 
